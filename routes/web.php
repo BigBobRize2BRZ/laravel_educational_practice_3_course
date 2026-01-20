@@ -164,7 +164,7 @@ Route::get('/test/sum/{num1}/{num2}', [TestController::class, 'sum'])->where(['n
 
 
 
-//! 3) Представления
+//! 3) Представления 
 
 // Задание 1-3
 
