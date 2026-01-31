@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\task4Controller;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
@@ -180,3 +181,31 @@ Route::get('/post/test1', [TestController::class, 'test1']);
 Route::get('/post/test2', [TestController::class, 'test2']);
 Route::get('/post/test3', [TestController::class, 'test3']);
 
+
+
+
+//! 4) blade
+
+// Задание 1
+
+Route::get('/task4/one', [task4Controller::class, 'one']);
+
+// Задание 2-6
+
+Route::get('/task4/two', [task4Controller::class, 'two']);
+
+// Задание 7-8
+
+Route::get('/task4/three', [task4Controller::class, 'three']);
+
+// Задание 9-13
+
+Route::get('/task4/four', [task4Controller::class, 'four']);
+
+// Задание 14-39
+
+Route::get('/task4/five', [task4Controller::class, 'five']);
+
+// Задание 40-48
+
+Route::get('/task4/six', [task4Controller::class, 'six']);
