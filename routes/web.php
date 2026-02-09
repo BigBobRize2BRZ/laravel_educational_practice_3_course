@@ -139,29 +139,29 @@ use Illuminate\Support\Facades\Route;
 
 //! 2) Контроллеры
 
-// Задание 1-5
+// // Задание 1-5
 
-Route::get('/user', [UserController::class, 'show']);
-Route::get('/user/all', [UserController::class, 'all']);
+// Route::get('/user', [UserController::class, 'show']);
+// Route::get('/user/all', [UserController::class, 'all']);
 
-// Задание 6-7
+// // Задание 6-7
 
-Route::get('/user/{name}', [UserController::class, 'name'])->whereAlpha('name');
-Route::get('/user/{surname}/{name}', [UserController::class, 'surnameName'])->whereAlpha('surname')->whereAlpha('name');
+// Route::get('/user/{name}', [UserController::class, 'name'])->whereAlpha('name');
+// Route::get('/user/{surname}/{name}', [UserController::class, 'surnameName'])->whereAlpha('surname')->whereAlpha('name');
 
 
-// Задание 8-9
+// // Задание 8-9
 
-Route::get('/users/{user}', [UserController::class, 'sendIntoTown']);
+// Route::get('/users/{user}', [UserController::class, 'sendIntoTown']);
 
-// Задание 10-11
+// // Задание 10-11
 
-Route::get('/pages/show/{id}', [TypeController::class, 'showOne'])->where(['id' => '[0-9]+']);
-Route::get('/pages/all', [TypeController::class, 'showAll']);
+// Route::get('/pages/show/{id}', [TypeController::class, 'showOne'])->where(['id' => '[0-9]+']);
+// Route::get('/pages/all', [TypeController::class, 'showAll']);
 
-// Задание 12
+// // Задание 12
 
-Route::get('/test/sum/{num1}/{num2}', [TestController::class, 'sum'])->where(['num1' => '[0-9]+', 'num2' => '[0-9]+']);
+// Route::get('/test/sum/{num1}/{num2}', [TestController::class, 'sum'])->where(['num1' => '[0-9]+', 'num2' => '[0-9]+']);
 
 
 
@@ -186,26 +186,41 @@ Route::get('/post/test3', [TestController::class, 'test3']);
 
 //! 4) blade
 
+Route::prefix('task4')->group(function () {
+
 // Задание 1
 
-Route::get('/task4/one', [task4Controller::class, 'one']);
+Route::get('/one', [task4Controller::class, 'one']);
 
 // Задание 2-6
 
-Route::get('/task4/two', [task4Controller::class, 'two']);
+Route::get('/two', [task4Controller::class, 'two']);
 
 // Задание 7-8
 
-Route::get('/task4/three', [task4Controller::class, 'three']);
+Route::get('/three', [task4Controller::class, 'three']);
 
 // Задание 9-13
 
-Route::get('/task4/four', [task4Controller::class, 'four']);
+Route::get('/four', [task4Controller::class, 'four']);
 
 // Задание 14-39
 
-Route::get('/task4/five', [task4Controller::class, 'five']);
+Route::get('/five', [task4Controller::class, 'five']);
 
 // Задание 40-48
 
-Route::get('/task4/six', [task4Controller::class, 'six']);
+Route::get('/six', [task4Controller::class, 'six']);
+
+});
+
+
+//! 6) Построитель запросов
+
+Route::prefix('task6')->group(function () {
+
+    // Задание 1-
+    Route::get('/show', [UserController::class, 'show']);
+
+
+});
