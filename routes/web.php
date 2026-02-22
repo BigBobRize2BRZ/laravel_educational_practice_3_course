@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\task4Controller;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TypeController;
@@ -188,30 +190,29 @@ Route::get('/post/test3', [TestController::class, 'test3']);
 
 Route::prefix('task4')->group(function () {
 
-// Задание 1
+    // Задание 1
 
-Route::get('/one', [task4Controller::class, 'one']);
+    Route::get('/one', [task4Controller::class, 'one']);
 
-// Задание 2-6
+    // Задание 2-6
 
-Route::get('/two', [task4Controller::class, 'two']);
+    Route::get('/two', [task4Controller::class, 'two']);
 
-// Задание 7-8
+    // Задание 7-8
 
-Route::get('/three', [task4Controller::class, 'three']);
+    Route::get('/three', [task4Controller::class, 'three']);
 
-// Задание 9-13
+    // Задание 9-13
 
-Route::get('/four', [task4Controller::class, 'four']);
+    Route::get('/four', [task4Controller::class, 'four']);
 
-// Задание 14-39
+    // Задание 14-39
 
-Route::get('/five', [task4Controller::class, 'five']);
+    Route::get('/five', [task4Controller::class, 'five']);
 
-// Задание 40-48
+    // Задание 40-48
 
-Route::get('/six', [task4Controller::class, 'six']);
-
+    Route::get('/six', [task4Controller::class, 'six']);
 });
 
 
@@ -219,8 +220,36 @@ Route::get('/six', [task4Controller::class, 'six']);
 
 Route::prefix('task6')->group(function () {
 
-    // Задание 1-
+    // Задания 1-59
+    Route::get('/show', [UserController::class, 'show']);
+});
+
+
+
+//! 7) Модели
+
+Route::prefix('task7')->group(function () {
+
+    // Задания 1-19
     Route::get('/show', [UserController::class, 'show']);
 
+    // Задания для самостоятельной работы
+    Route::prefix('product')->group(function () {
+        Route::get('/create', [ProductController::class, 'create']);
+        Route::get('/eloquent', [ProductController::class, 'eloquent']);
+        Route::get('/createMethod1', [ProductController::class, 'createMethod1']);
+        Route::get('/createMethod2', [ProductController::class, 'createMethod2']);
+        Route::get('/findAndUpdate', [ProductController::class, 'findAndUpdate']);
+        Route::get('/delete', [ProductController::class, 'delete']);
+        Route::get('/filtiring', [ProductController::class, 'filtiring']);
+        Route::get('/scopes', [ProductController::class, 'scopes']);
+        Route::get('/casts', [ProductController::class, 'casts']);
+    });
 
+    Route::prefix('article')->group(function () {
+        Route::get('/create', [ArticleController::class, 'create']);
+        Route::get('/filtiring', [ArticleController::class, 'filtiring']);
+        Route::get('/scopes', [ArticleController::class, 'scopes']);
+        Route::get('/attribute', [ArticleController::class, 'attribute']);
+    });
 });

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     Дополнительное Задание 13
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->text('description')->change();
+            $table->json('options')->nullable()->after('quantity');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('description')->change();
+            $table->dropColumn('options');
         });
     }
 };

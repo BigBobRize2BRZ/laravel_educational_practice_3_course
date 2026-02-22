@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-    Дополнительное Задание 3
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->enum('status', ['pending', 'processing', 'completed', 'declined']);
+            $table->string('order_id')->primary(); 
+            $table->decimal('amount', 10, 2);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

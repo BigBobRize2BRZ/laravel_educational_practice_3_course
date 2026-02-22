@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     Дополнительное Задание 8
+     * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->text('text');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->decimal('price', 8, 2);
+            $table->integer('quantity');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('products');
     }
 };
