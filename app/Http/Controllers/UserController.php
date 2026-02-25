@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -497,120 +498,166 @@ class UserController extends Controller
 
     //! 7) Модели
 
+    // public function show()
+    // {
+    //     // // Задание 5
+    //     // $users = User::all();
+
+    //     // foreach ($users as $user) {
+    //     //     dump($user->id);
+    //     //     dump($user->sex);
+    //     //     dump($user->first_name);
+    //     //     dump($user->second_name);
+    //     //     dump($user->birth_date);
+    //     //     dump($user->age);
+    //     //     dump($user->email);
+    //     //     dump($user->avatar);
+    //     //     dump($user->salary);
+    //     //     dump($user->cities_id);
+    //     //     dump($user->created_at);
+    //     // }
+
+
+    //     // // Задание 6
+    //     // $users = User::all();
+    //     // $taskNumber = '6';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 7
+    //     // $users = User::where('age', '=', '30')->get();
+    //     // $taskNumber = '7';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 8
+    //     // $users = User::whereBetween('salary', [100, 300])->get();
+    //     // $taskNumber = '8';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 9
+    //     // $users = User::where('id', '>', '3')->get();
+    //     // $taskNumber = '9';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 10
+    //     // $users = User::where('id', '>', '3')->limit(5)->get();
+    //     // $taskNumber = '10';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 11
+    //     // $users = User::whereIn('id', [1, 3, 4, 5])->get();
+    //     // $taskNumber = '11';
+
+    //     // return view('task7.show', compact('taskNumber', 'users'));
+
+
+    //     // // Задание 12
+    //     // $users = User::where('age', 30)->first();
+    //     // $taskNumber = '12';
+
+    //     // dump($users);    
+
+
+    //     // // Задание 13
+    //     // $users = User::find(3);
+    //     // $taskNumber = '13';
+
+    //     // dump($users); 
+
+
+    //     // // Задание 14
+    //     // $users = User::find([3, 4, 5]);
+    //     // $taskNumber = '14';
+
+    //     // dump($users); 
+
+
+    //     // // Задание 15
+    //     // $user = new User;
+
+    //     // $user->sex = 'male';
+    //     // $user->first_name = 'Victor';
+    //     // $user->second_name = 'Gafner';
+    //     // $user->birth_date = '2007-03-21';
+    //     // $user->age = 18;
+    //     // $user->email = 'victorgafner2007@gmail.com';
+    //     // $user->avatar = 'https://via.placeholder.com/200x200.png/007799?text=people+itaque';
+    //     // $user->salary = 233;
+    //     // $user->cities_id = 22;
+    //     // $user->created_at = '2024-11-30 16:18:28';
+
+    //     // $user->save();
+
+
+    //     // // Задание 16
+    //     // $user = User::find(10);
+    //     // $user->second_name = 'Gafner';
+
+    //     // $user->save();
+
+
+    //     // // Задание 17
+    //     // $deletedRows = User::where('age', '>', 30)->delete();
+
+    //     // // Задание 18
+    //     // User::destroy(3);
+
+    //     // // Задание 19
+    //     // User::destroy(4, 5, 6);
+    // }
+
+
+    //! 8) Связи в моделях
+
     public function show()
     {
-        // // Задание 5
-        // $users = User::all();
-
-        // foreach ($users as $user) {
-        //     dump($user->id);
-        //     dump($user->sex);
-        //     dump($user->first_name);
-        //     dump($user->second_name);
-        //     dump($user->birth_date);
-        //     dump($user->age);
-        //     dump($user->email);
-        //     dump($user->avatar);
-        //     dump($user->salary);
-        //     dump($user->cities_id);
-        //     dump($user->created_at);
-        // }
+        // // Задание 3
+        // $user = User::find(1);
+        // dump($user->profile->name);
 
 
-        // // Задание 6
-        // $users = User::all();
-        // $taskNumber = '6';
+        // Задание 4
+        $taskNumber = '3';
 
-        // return view('task7.show', compact('taskNumber', 'users'));
+        $user = User::find(1);
+        $user = $user->profile->name;
 
+        return view('task8.show', compact('taskNumber', 'user'));
+    }
 
-        // // Задание 7
-        // $users = User::where('age', '=', '30')->get();
-        // $taskNumber = '7';
+    public function table()
+    {
+        // Задание 5
+        $taskNumber = '5';
 
-        // return view('task7.show', compact('taskNumber', 'users'));
+        $users = User::all();
+        return view('task8.table', compact('taskNumber', 'users'));
+    }
 
+    public function tableProfile()
+    {
+        // Задание 6-8
+        $taskNumber = '6-8';
 
-        // // Задание 8
-        // $users = User::whereBetween('salary', [100, 300])->get();
-        // $taskNumber = '8';
+        $profiles = Profile::all();
+        return view('task8.tableProfile', compact('taskNumber', 'profiles'));
+    }
 
-        // return view('task7.show', compact('taskNumber', 'users'));
-
-
-        // // Задание 9
-        // $users = User::where('id', '>', '3')->get();
-        // $taskNumber = '9';
-
-        // return view('task7.show', compact('taskNumber', 'users'));
-
-
-        // // Задание 10
-        // $users = User::where('id', '>', '3')->limit(5)->get();
-        // $taskNumber = '10';
-
-        // return view('task7.show', compact('taskNumber', 'users'));
-
-
-        // // Задание 11
-        // $users = User::whereIn('id', [1, 3, 4, 5])->get();
-        // $taskNumber = '11';
-
-        // return view('task7.show', compact('taskNumber', 'users'));
-
-
-        // // Задание 12
-        // $users = User::where('age', 30)->first();
-        // $taskNumber = '12';
-
-        // dump($users);    
-
-
-        // // Задание 13
-        // $users = User::find(3);
-        // $taskNumber = '13';
-
-        // dump($users); 
-
-
-        // // Задание 14
-        // $users = User::find([3, 4, 5]);
-        // $taskNumber = '14';
-
-        // dump($users); 
-
-
-        // // Задание 15
-        // $user = new User;
-
-        // $user->sex = 'male';
-        // $user->first_name = 'Victor';
-        // $user->second_name = 'Gafner';
-        // $user->birth_date = '2007-03-21';
-        // $user->age = 18;
-        // $user->email = 'victorgafner2007@gmail.com';
-        // $user->avatar = 'https://via.placeholder.com/200x200.png/007799?text=people+itaque';
-        // $user->salary = 233;
-        // $user->cities_id = 22;
-        // $user->created_at = '2024-11-30 16:18:28';
-
-        // $user->save();
-
-
-        // // Задание 16
-        // $user = User::find(10);
-        // $user->second_name = 'Gafner';
-
-        // $user->save();
-
-
-        // // Задание 17
-        // $deletedRows = User::where('age', '>', 30)->delete();
-
-        // // Задание 18
-        // User::destroy(3);
-
-        // // Задание 19
-        // User::destroy(4, 5, 6);
+    public function task24()
+    {
+        // Задание 24
+        $user = User::find(1);
+        dump($user->name);
+        dump($user->city->name);
+        dump($user->position->name);
     }
 }

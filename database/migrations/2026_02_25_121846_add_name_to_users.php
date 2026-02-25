@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-    Дополнительное Задание 9
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unique('email');
-            $table->index('second_name');
+            $table->string('name')->after('password');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade')->after('password');
+            $table->foreignId('position_id')->constrained()->onDelete('cascade')->after('password');
         });
     }
 
@@ -23,8 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropUnique(['email']);
-            $table->dropIndex(['second_name']);
+            $table->dropColumn('name');
+            $table->dropColumn('city_id');
+            $table->dropColumn('position_id');
         });
     }
 };

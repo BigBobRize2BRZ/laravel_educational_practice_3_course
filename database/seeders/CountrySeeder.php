@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Article;
 
-class ArticlesTableSeeder extends Seeder
+class CountrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Article::factory(50)->create();
+        Country::factory(10)
+            ->has(City::factory())
+            ->create();
     }
 }

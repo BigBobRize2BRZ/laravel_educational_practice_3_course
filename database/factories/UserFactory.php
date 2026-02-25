@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\City;
-use App\Models\User;
+use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,19 +18,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $sex = $this->faker->randomElement(['male', 'female']);
-
         return [
-            'sex'         => $sex,
-            'first_name'  => $this->faker->firstName($sex), 
-            'second_name' => $this->faker->lastName(),
-            'birth_date'  => $this->faker->date(max: 'now'),
-            'age'         => $this->faker->numberBetween(18, 100), 
-            'email'       => $this->faker->unique()->safeEmail(),
-            'avatar'      => $this->faker->imageUrl(200, 200, 'people'),
-            'salary'      => (string) $this->faker->optional(0.7, '0')->numberBetween(10000, 200000),
-            'cities_id'   => City::inRandomOrder()->first()?->id ?? 1, 
-            'created_at'  => $this->faker->dateTimeBetween('-2 years'),
+            'login' => $this->faker->unique()->userName(),
+            'password' => $this->faker->password(),
+            'name' => $this->faker->name(),
+            'city_id' => City::inRandomOrder()->first()?->id ?? 1,
+            'position_id' => Position::inRandomOrder()->first()?->id ?? 1,
         ];
     }
 }

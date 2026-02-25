@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
  */
-class CityFactory extends Factory
+class ProfileFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,9 @@ class CityFactory extends Factory
     {
         return [
             'name' => $this->faker->firstName(),
-            'population' => $this->faker->numberBetween(1000, 1000000),
-            'country_id' => Country::factory(),
+            'surname' => $this->faker->lastName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'user_id' => User::factory(),
         ];
     }
 }
