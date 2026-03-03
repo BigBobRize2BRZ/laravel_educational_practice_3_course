@@ -273,4 +273,8 @@ Route::prefix('task8')->group(function () {
     Route::get('/country', [CountryController::class, 'show']);
     // Задание 21-24
     Route::get('/task24', [UserController::class, 'task24']);
+    // Задание 25-28
+    Route::get('/belongsToMany', [UserController::class, 'belongsToMany']);
+    // Задание 29
+    Route::get('/task29', [UserController::class, 'task29']);
 });

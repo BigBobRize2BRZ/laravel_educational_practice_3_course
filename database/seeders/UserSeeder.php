@@ -8,6 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -21,11 +22,16 @@ class UserSeeder extends Seeder
 
         $positions = Position::factory(10)->create();
 
-        User::factory(20)
+        $users = User::factory(20)
             ->has(Profile::factory())
             ->create([
                 'city_id' => fn() => $cities->random()->id,
                 'position_id' => fn() => $positions->random()->id,
             ]);
+
+        foreach ($users as $user) {
+            $roleIds = Role::inRandomOrder()->value('id');
+            $user->roles()->attach($roleIds);
+        }
     }
 }

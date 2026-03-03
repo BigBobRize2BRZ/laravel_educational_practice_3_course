@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -659,5 +660,27 @@ class UserController extends Controller
         dump($user->name);
         dump($user->city->name);
         dump($user->position->name);
+    }
+
+    public function belongsToMany()
+    {
+        // Задание 26 и 28
+        $users = User::with('roles')->get();
+        dump($users->toArray());
+
+        // Задание 27 и 28
+        $roles = Role::with('users')->get();
+        dump($roles->toArray());
+    }
+
+    public function task29()
+    {
+        $users = User::with(['city', 'position'])->get();
+
+        foreach ($users as $user) {
+            dump($user);
+            dump($user->city);
+            dump($user->position);
+        }
     }
 }
