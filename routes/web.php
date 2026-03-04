@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\task4Controller;
 use App\Http\Controllers\TestController;
@@ -260,21 +261,44 @@ use Illuminate\Support\Facades\Route;
 
 //! 8) Связи в моделях
 
-Route::prefix('task8')->group(function () {
-    // Задание 1-4
-    Route::get('/show', [UserController::class, 'show']);
-    // Задание 5
-    Route::get('/table', [UserController::class, 'table']);
-    // Задание 6-8
-    Route::get('/tableProfile', [UserController::class, 'tableProfile']);
-    // Задание 9-12
-    Route::get('/task12', [CountryController::class, 'task12']);
-    // Задание 13-20
-    Route::get('/country', [CountryController::class, 'show']);
-    // Задание 21-24
-    Route::get('/task24', [UserController::class, 'task24']);
-    // Задание 25-28
-    Route::get('/belongsToMany', [UserController::class, 'belongsToMany']);
-    // Задание 29
-    Route::get('/task29', [UserController::class, 'task29']);
-});
+// Route::prefix('task8')->group(function () {
+//     // Задание 1-4
+//     Route::get('/show', [UserController::class, 'show']);
+//     // Задание 5
+//     Route::get('/table', [UserController::class, 'table']);
+//     // Задание 6-8
+//     Route::get('/tableProfile', [UserController::class, 'tableProfile']);
+//     // Задание 9-12
+//     Route::get('/task12', [CountryController::class, 'task12']);
+//     // Задание 13-20
+//     Route::get('/country', [CountryController::class, 'show']);
+//     // Задание 21-24
+//     Route::get('/task24', [UserController::class, 'task24']);
+//     // Задание 25-28
+//     Route::get('/belongsToMany', [UserController::class, 'belongsToMany']);
+//     // Задание 29
+//     Route::get('/task29', [UserController::class, 'task29']);
+// });
+
+
+//! 9) Формы
+
+// // Задание 2
+// Route::get('/form', [FormController::class, 'form']);
+// Route::get('/result', [FormController::class, 'result']);
+
+// // Задание 3
+// Route::get('/form', [FormController::class, 'form']);
+// Route::post('/result', [FormController::class, 'result']);
+
+// // Задание 4
+// Route::match(['get', 'post'], '/form', [FormController::class, 'form']);
+
+// // Задание 5-7
+// Route::match(['get', 'post'], '/form', [FormController::class, 'form']);
+
+// Задание 8
+Route::match(['get', 'post'], '/form/{id}/{login}', [FormController::class, 'form']);
+
+// Задание 9-12
+Route::get('/test/method', [FormController::class, 'methods']);
