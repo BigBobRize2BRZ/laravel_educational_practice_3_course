@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Иван Петров",
+        "email": "ivan.petrov@example.com",
+        "age": 28,
+        "salary": 75000,
+        "created_at": "2026-01-15 10:30:00",
+        "updated_at": "2026-01-15 10:30:00"
+    },
+    {
+        "name": "Елена Смирнова",
+        "email": "elena.smirnova@example.com",
+        "age": 32,
+        "salary": 95000,
+        "created_at": "2026-01-16 14:20:00",
+        "updated_at": "2026-01-16 14:20:00"
+    },
+    {
+        "name": "Алексей Иванов",
+        "email": "alexey.ivanov@example.com",
+        "age": 41,
+        "salary": 120000,
+        "created_at": "2026-01-17 09:15:00",
+        "updated_at": "2026-01-17 09:15:00"
+    },
+    {
+        "name": "Мария Соколова",
+        "email": "maria.sokolova@example.com",
+        "age": 25,
+        "salary": 68000,
+        "created_at": "2026-01-18 11:45:00",
+        "updated_at": "2026-01-18 11:45:00"
+    },
+    {
+        "name": "Дмитрий Козлов",
+        "email": "dmitry.kozlov@example.com",
+        "age": 35,
+        "salary": 110000,
+        "created_at": "2026-01-19 16:30:00",
+        "updated_at": "2026-01-19 16:30:00"
+    }
+]

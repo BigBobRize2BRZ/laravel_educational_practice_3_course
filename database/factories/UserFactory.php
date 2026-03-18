@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\City;
-use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,12 +16,33 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
+        $createdAt = $this->faker->dateTimeBetween('-1 year', 'now');
+
         return [
-            'login' => $this->faker->unique()->userName(),
-            'password' => $this->faker->password(),
             'name' => $this->faker->name(),
-            'city_id' => City::inRandomOrder()->first()?->id ?? 1,
-            'position_id' => Position::inRandomOrder()->first()?->id ?? 1,
+            'email' => $this->faker->unique()->safeEmail(),
+            'age' => $this->faker->numberBetween(18, 120),
+            'salary' => $this->faker->numberBetween(30000, 200000),
+            'created_at' => $createdAt,
+            'updated_at' => $this->faker->dateTimeBetween($createdAt, 'now'),
         ];
+    }
+    /**
+        Состояние для неактивного пользователя
+     */
+
+    //! Самостоятельная работа: Задание 15
+    public function inactive()
+    {
+        return $this->state(function (array $attributes) {
+            $createdAt = $this->faker->dateTimeBetween('-1 year', '-10 months');
+            $updatedAt = $this->faker->dateTimeBetween($createdAt, '-9 months');
+
+            return [
+                'created_at' => $createdAt,
+                'updated_at' => $updatedAt,
+            ];
+        });
     }
 }

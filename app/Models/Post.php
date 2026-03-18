@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Profile extends Model
+class Post extends Model
 {
     use HasFactory;
-    protected $table = 'profiles';
-    protected $fillable = ['name', 'surname', 'email', 'user_id'];
+    protected $table = 'posts';
+    protected $fillable = ['title', 'slug', 'likes'];
 
-    public function user()
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -4,31 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Model
 {
     use HasFactory;
     protected $table = 'users';
-    protected $fillable = ['login', 'password', 'name', 'city_id', 'position_id'];
-    protected $hidden = ['password'];
+    protected $fillable = ['name', 'email', 'age', 'salary'];
 
-    public function profile()
+    public function posts(): HasMany
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasMany(Post::class);
     }
 
-    public function city()
+     public function roles()
     {
-        return $this->belongsTo(City::class);
-    }
-
-    public function position()
-    {
-        return $this->belongsTo(Position::class);
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->belongsToMany(Role::class);
     }
 }
