@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\task4Controller;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TypeController;
@@ -302,3 +303,53 @@ Route::match(['get', 'post'], '/form/{id}/{login}', [FormController::class, 'for
 
 // Задание 9-12
 Route::get('/test/method', [FormController::class, 'methods']);
+
+
+
+//! 11) Сессии
+
+Route::prefix('session')->group(function () {
+    // Задание 1
+    Route::get('/object', [SessionController::class, 'getSessionObject']);
+    // Задание 2
+    Route::get('/set-value', [SessionController::class, 'setValue']);
+    Route::get('/get-value', [SessionController::class, 'getValue']);
+    // Задание 3-4
+    Route::get('/counter', [SessionController::class, 'pageCounter']);
+    // Задание 5
+    Route::get('/first-visit', [SessionController::class, 'firstVisitTime']);
+    // Задание 6
+    Route::get('delete-session-var', [SessionController::class, 'deleteVariable']);
+    // Задание 7
+    Route::get('/pull-show', [SessionController::class, 'pullAndShow']);
+    // Задание 8
+    Route::get('/session-all', [SessionController::class, 'showAllSession']);
+    // Задание 9
+    Route::get('/check-time', [SessionController::class, 'checkTime']);
+    // Задания 10-11
+    Route::get('/set-array', [SessionController::class, 'setNumberArray']);
+    Route::get('/add-to-array', [SessionController::class, 'addToArray']);
+    // Задания 12-13
+    Route::get('/session-save', [SessionController::class, 'saveViaGlobalHelper']);
+    Route::get('/session-get', [SessionController::class, 'getViaGlobalHelper']);
+
+    //? Самостоятельная работа
+    // Задание 1
+    Route::get('/save-username', [SessionController::class, 'saveUsername']);
+    // Задание 2
+    Route::get('/facade-put-get', [SessionController::class, 'facadePutGet']);
+    // Задание 3
+    Route::get('/check-has', [SessionController::class, 'checkHasKey']);
+    // Задание 4
+    Route::get('/forget-demo', [SessionController::class, 'forgetDemo']);
+    // Задание 5
+    Route::get('/flash-form', [SessionController::class, 'showFlashForm']);
+    Route::post('/flash-submit', [SessionController::class, 'submitFlashForm'])->name('flash.submit');
+    Route::get('/flash-result', [SessionController::class, 'showFlashResult']);
+    // Задание 6
+    Route::get('/session-all-data', [SessionController::class, 'getAllSessionData']);
+    // Задание 7
+    Route::get('/flush-session', [SessionController::class, 'flushAll']);
+    // Задание 8
+    Route::get('/push-array', [SessionController::class, 'pushArrayDemo']);
+});
