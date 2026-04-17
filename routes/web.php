@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CookieController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProductController;
@@ -352,4 +353,33 @@ Route::prefix('session')->group(function () {
     Route::get('/flush-session', [SessionController::class, 'flushAll']);
     // Задание 8
     Route::get('/push-array', [SessionController::class, 'pushArrayDemo']);
+});
+
+
+
+//! 12) Куки
+
+Route::prefix('cookie')->group(function () {
+    // Задание 1
+    Route::get('/set', [CookieController::class, 'setCookie']);
+    Route::get('/get', [CookieController::class, 'getCookie']);
+    // Задание 2
+    Route::get('/counter', [CookieController::class, 'counter']);
+    // Задание 3
+    Route::get('/queue', [CookieController::class, 'queueCookies']);
+
+    //? Самостоятельная работа
+    // Задания 1 и 3 
+    Route::get('/set-username', [CookieController::class, 'setUsernameCookie']);
+    // Задания 2 и 6
+    Route::get('/get-username', [CookieController::class, 'getUsernameCookie']);
+    // Задание 4 
+    Route::get('/queue-helper', [CookieController::class, 'queueCookieWithHelper']);
+    // Задание 5
+    Route::get('/forget', [CookieController::class, 'forgetCookie']);
+    // Задание 7
+    Route::get('/secure', [CookieController::class, 'secureCookie']);
+    // Задание 8
+    Route::get('/array-set', [CookieController::class, 'arrayCookie']);
+    Route::get('/array-get', [CookieController::class, 'readArrayCookie']);
 });
